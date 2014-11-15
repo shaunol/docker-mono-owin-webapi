@@ -30,3 +30,7 @@ cpuThreads * 1.5 seems like a good formula to start with regarding max. concurre
 1100 requests per second were observed from aws t1.micro -> t1.micro instance (c=2, no network placement group, 1 vCPU, unknown ECUs)
 
 4600 requests per second from c3.2xlarge -> c3.2xlarge instance (c=12, in same network placement group, 8 vCPU, 28 ECUs, ixgbevf 2.11.3-k)
+
+5600 requests per second from c3.8xlarge -> c3.8xlarge instance (c=48, in same network placement group, 32 vCPU, 108 ECUs, ixgbevf 2.11.3-k)
+
+Going to have to play with some different benchmark methods, it's most likely the ab client needs to be distributed and maybe the .net threadpool settings need to be tweaked on the server side.
