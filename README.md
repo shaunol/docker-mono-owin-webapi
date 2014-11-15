@@ -3,11 +3,17 @@ docker-mono-owin-webapi
 
 TODO..
 
-docker run -d -p -rm 9100:9100 shaunol/mono-owin-webapi
+Run in current terminal session and remove container on exit:
 
-Attach to see example output or browse to http://[docker_hostname]:9100/values
+docker run -i -rm -p 9100:9100 shaunol/mono-owin-webapi
 
-Executes code from webapi.tar
+Run as a daemon (requires manual container cleanup after use):
+
+docker run -d -p 9100:9100 shaunol/mono-owin-webapi
+
+Browse to http://[docker_hostname]:9100/values to confirm operation
+
+Executable is from webapi.tar
 
 See ./webapi-src for the .net source code
 

@@ -7,11 +7,18 @@ namespace OwinMonoSelfHostTest
 {
     class Program
     {
-        private static readonly WaitHandle _WaitHandle = new ManualResetEvent(false);
+        private static readonly ManualResetEvent _ExitEvent = new ManualResetEvent(false);
 
         static void Main()
         {
+            Console.CancelKeyPress += (sender, eventArgs) =>
+            {
+                eventArgs.Cancel = true;
+                _ExitEvent.Set();
+            };
+
             // Start OWIN host 
+            // This requires administrative rights to bind on all interfaces like this.
             using (WebApp.Start<Startup>("http://+:9100"))
             {
                 // Create HttpCient and make a request to api/values 
@@ -22,10 +29,7 @@ namespace OwinMonoSelfHostTest
                 Console.WriteLine(response);
                 Console.WriteLine(response.Content.ReadAsStringAsync().Result);
 
-                while (_WaitHandle.WaitOne())
-                {
-                    //
-                }
+                _ExitEvent.WaitOne();
             }
         }
     }
