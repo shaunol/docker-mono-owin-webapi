@@ -9,4 +9,5 @@ WORKDIR /root
 
 ADD webapi.tar /root/
 
+# Todo cloud based config
 ENTRYPOINT ["mono", "/root/webapi/OwinMonoSelfHostTest.exe"]

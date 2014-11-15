@@ -11,4 +11,5 @@ Executes code from webapi.tar
 
 See ./webapi-src for the .net source code
 
-Benchmark helper is in ./ab-webapi
+Benchmark:
+docker run -t -i -rm shaunol/docker-ab ab -n 1000 -c 2 http://[docker_hostname]:9100/values
