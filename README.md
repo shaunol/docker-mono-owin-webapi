@@ -3,7 +3,7 @@ docker-mono-owin-webapi
 
 TODO..
 
-docker run -d -p -rm 9100:9100
+docker run -d -p -rm 9100:9100 shaunol/mono-owin-webapi
 
 Attach to see example output or browse to http://[docker_hostname]:9100/values
 
