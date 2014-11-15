@@ -5,7 +5,7 @@ TODO..
 
 Run in current terminal session and remove container on exit:
 
-docker run -i -rm -p 9100:9100 shaunol/mono-owin-webapi
+docker run -t -i --rm -p 9100:9100 shaunol/mono-owin-webapi
 
 Run as a daemon (requires manual container cleanup after use):
 
