@@ -1,6 +1,8 @@
 docker-mono-owin-webapi
 =======================
 
+Proof of concept
+
 Run in current terminal session and remove container on exit:
 
 ```
@@ -34,3 +36,5 @@ cpuThreads * 1.5 seems like a good formula to start with regarding max. concurre
 5600 requests per second from c3.8xlarge -> c3.8xlarge instance (c=48, in same network placement group, 32 vCPU, 108 ECUs, ixgbevf 2.11.3-k)
 
 Going to have to play with some different benchmark methods, it's most likely the ab client needs to be distributed and maybe the .net threadpool settings need to be tweaked on the server side.
+
+Using 3x c3.large instances to target a c3.2xlarge instance, I was able to get 4500 combined requests per second. With a concurrency of 4 per source instance for peak performance, 95% of all requests were served within 5ms. With a concurrency of 6, 95% was 7ms, c=12, 95% was 12ms, c=24, 95% was 20ms, c=48, 95% was 34ms.
